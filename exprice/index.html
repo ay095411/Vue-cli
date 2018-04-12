@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+   	 <!--禁用缩放-->
+		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>首页</title>
+    <script src="static/js/swiper-3.4.2.min.js"></script>
+    <link rel="stylesheet" href="static/css/swiper-3.4.2.min.css" />
+  </head>
+  <style>
+  		*{font-size: 0.18rem;}
+  		a{text-decoration: none;color: #000;}
+  		ul,ol,dl,td,table,tr,div,p{margin: 0 !important;padding: 0 !important;list-style: none !important;}
+  		input,option,section,select{outline: none;}
+  		.swiper-pagination-bullet{background: #000;}
+			.swiper-pagination-bullet-active{background: red;}
+			.active{color: orangered;background: #666;}
+  </style>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+  <script>
+  	(function(win) {
+		    var doc = win.document;
+		    var docEl = doc.documentElement;
+		    var tid;
+				
+		    function refreshRem() {
+		        var width = docEl.getBoundingClientRect().width;
+		        if (width > 540) { // 最大宽度
+		            width = 540;
+		        }
+		        var rem = width / 6.4;
+		        docEl.style.fontSize = rem + 'px';
+		    }
+				
+		    win.addEventListener('resize', function() {
+		        clearTimeout(tid);
+		        tid = setTimeout(refreshRem, 300);
+		    }, false);
+		    win.addEventListener('pageshow', function(e) {
+		        if (e.persisted) {
+		            clearTimeout(tid);
+		            tid = setTimeout(refreshRem, 300);
+		        }
+		    }, false);
+				
+		    refreshRem();
+				
+		})(window);
+  </script>
+</html>
